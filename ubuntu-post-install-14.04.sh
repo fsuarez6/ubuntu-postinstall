@@ -756,15 +756,15 @@ case $REPLY in
     ;;
 # Smartgithg
 7) 
-    echo 'Downloading Smartgithg 5...'
-    wget http://www.syntevo.com/download/smartgithg/smartgithg-5_0_9.deb
+    echo 'Downloading Smartgithg 6...'
+    wget http://www.syntevo.com/download/smartgithg/smartgithg-6_0_4.deb
     # Install package(s)
-    echo 'Installing Smartgithg 5...'
+    echo 'Installing Smartgithg 6...'
     echo 'Requires root privileges:'
-    sudo dpkg -i smartgithg-5_0_9.deb
+    sudo dpkg -i smartgithg-6_0_4.deb
     sudo apt-get install -fy
     # Cleanup and finish
-    rm smartgithg-5_0_9.deb
+    rm smartgithg-6_0_4.deb
     cd
     echo 'Done.'
     thirdparty
