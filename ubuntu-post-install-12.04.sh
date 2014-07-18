@@ -125,14 +125,10 @@ function thirdparty {
 echo 'What would you like to install? '
 echo ''
 echo '1. Google Chrome?'
-echo '2. Google Talk Plugin?'
-echo '3. Google Music Manager?'
-echo '4. Steam?'
-echo '5. Sublime Text 3 (build 3059)?'
-echo '6. Spotify client'
-echo '7. Smartgithg'
-echo '8. Texmaker'
-echo '9. Dropbox'
+echo '2. Smartgithg'
+echo '3. Texmaker'
+echo '4. Dropbox'
+echo '5. Phantom Omni'
 echo 'r. Return'
 echo ''
 read -p 'Enter your choice: ' REPLY
@@ -157,150 +153,43 @@ case $REPLY in
     echo 'Done.'
     thirdparty
     ;;
-# Google Talk Plugin
-2)
-    echo 'Downloading Google Talk Plugin...'
-    # Download Debian file that matches system architecture
-    if [ $(uname -i) = 'i386' ]; then
-        wget https://dl.google.com/linux/direct/google-talkplugin_current_i386.deb
-    elif [ $(uname -i) = 'x86_64' ]; then
-        wget https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb
-    fi
-    # Install package(s)
-    echo 'Installing Google Talk Plugin...'
-    echo 'Requires root privileges:'
-    sudo dpkg -i google-talkplugin_current*.deb
-    sudo apt-get install -fy
-    # Cleanup and finish
-    rm google-talkplugin_current*.deb
-    cd
-    echo 'Done.'
-    thirdparty
-    ;;
-# Google Music Manager
-3)
-    echo 'Downloading Google Music Manager...'
-    # Download Debian file that matches system architecture
-    if [ $(uname -i) = 'i386' ]; then
-        wget https://dl.google.com/linux/direct/google-musicmanager-beta_current_i386.deb
-    elif [ $(uname -i) = 'x86_64' ]; then
-        wget https://dl.google.com/linux/direct/google-musicmanager-beta_current_amd64.deb
-    fi
-    # Install package(s)
-    echo 'Installing Google Music Manager...'
-    echo 'Requires root privileges:'
-    sudo dpkg -i google-musicmanager-*.deb
-    sudo apt-get install -fy
-    # Cleanup and finish
-    rm google-musicmanager*.deb
-    cd
-    echo 'Done.'
-    thirdparty
-    ;;
-# Steam
-4)
-    echo 'Downloading Steam...'
-    cd $HOME/Downloads
-    # Download Debian file that matches system architecture
-    if [ $(uname -i) = 'i386' ]; then
-        wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
-    elif [ $(uname -i) = 'x86_64' ]; then
-        wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
-    fi
-    # Install package(s)
-    echo 'Installing Steam...'
-    echo 'Requires root privileges:'
-    sudo dpkg -i steam*.deb
-    sudo apt-get install -fy
-    # Cleanup and finish
-    rm steam*.deb
-    cd
-    echo 'Done.'
-    thirdparty
-    ;;
-# Sublime Text 3 (build 3059)
-5)
-    echo 'Downloading Sublime Text 3 (build 3059)...'
-    # Download Debian file that matches system architecture
-    if [ $(uname -i) = 'i386' ]; then
-        wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_i386.deb
-    elif [ $(uname -i) = 'x86_64' ]; then
-        wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb
-    fi
-    # Install package(s)
-    echo 'Installing Sublime Text 3 (build 3059)...'
-    echo 'Requires root privileges:'
-    sudo dpkg -i sublime-text_build-3059*.deb
-    sudo apt-get install -fy
-    # Create symbolic link
-    echo 'Creating symbolic link...'
-    echo 'Requires root privileges:'
-    sudo ln -sf /opt/sublime_text/sublime_text /usr/bin/sublime
-    echo 'Done.'
-    # Cleanup and finish
-    rm sublime-text_build-3059*.deb
-    cd
-    echo 'Done.'
-    thirdparty
-    ;;
-# Spotify
-6)
-    # Add repository
-    echo 'Adding Spotify repository to sources...'
-    echo 'Creating apt list file...'
-    touch spotify.list
-    echo "deb http://repository.spotify.com stable non-free" >> spotify.list
-    echo 'Moving spotify.list to /etc/apt/sources.list.d/'
-    echo 'Requires root privileges:'
-    sudo mv -f spotify.list /etc/apt/sources.list.d/
-    echo 'Done.'
-    # Update repository information
-    echo 'Adding repository key and updating repository information...'
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-    sudo apt-get update
-    # Install package(s)
-    echo 'Installing Spotify client...'
-    sudo apt-get install -y spotify-client
-    echo 'Done.'
-    thirdparty
-    ;;
 # Smartgithg
-7) 
+2) 
     echo 'Downloading Smartgithg 6...'
     wget http://www.syntevo.com/download/smartgithg/smartgithg-6_0_4.deb
     # Install package(s)
     echo 'Installing Smartgithg 6...'
     echo 'Requires root privileges:'
-    sudo dpkg -i smartgithg-6_0_4.deb
+    sudo dpkg -i smartgithg*.deb
     sudo apt-get install -fy
     # Cleanup and finish
-    rm smartgithg-6_0_4.deb
+    rm smartgithg*.deb
     cd
     echo 'Done.'
     thirdparty
     ;;
 # Texmaker
-8) 
+3) 
     echo 'Downloading Texmaker...'
     # Download Debian file that matches system architecture
     if [ $(uname -i) = 'i386' ]; then
-        wget http://www.xm1math.net/texmaker/texmakerQT5_ubuntu_14.04_4.2_i386.deb
+        wget http://www.xm1math.net/texmaker/texmaker_ubuntu_12.04_4.2_i386.deb
     elif [ $(uname -i) = 'x86_64' ]; then
-        wget http://www.xm1math.net/texmaker/texmakerQT5_ubuntu_14.04_4.2_amd64.deb
+        wget http://www.xm1math.net/texmaker/texmaker_ubuntu_12.04_4.2_amd64.deb
     fi
     # Install package(s)
     echo 'Installing Texmaker...'
     echo 'Requires root privileges:'
-    sudo dpkg -i texmakerQT5_ubuntu_14.04_4.2_*.deb
+    sudo dpkg -i texmaker*.deb
     sudo apt-get install -fy
     # Cleanup and finish
-    rm texmakerQT5_ubuntu_14.04_4.2_*.deb
+    rm texmaker*.deb
     cd
     echo 'Done.'
     thirdparty
     ;;
 # Dropbox
-9) 
+4) 
     echo 'Downloading Dropbox...'
     # Download Debian file that matches system architecture
     if [ $(uname -i) = 'i386' ]; then
@@ -317,6 +206,79 @@ case $REPLY in
     rm dropbox_1.6.0_*.deb
     cd
     nautilus -q
+    echo 'Done.'
+    thirdparty
+    ;;
+# Phantom Omni
+5) 
+    echo 'Installing requirements:
+freeglut3-dev 
+g++ 
+libdrm-dev 
+libexpat1-dev 
+libglw1-mesa-dev
+libmotif-dev 
+libncurses5-dev 
+libraw1394-dev 
+libx11-dev 
+libxdamage-dev 
+libxext-dev 
+libxt-dev 
+libxxf86vm-dev 
+tcsh 
+unzip 
+x11proto-dri2-dev 
+x11proto-gl-dev 
+x11proto-print-dev'
+    echo ''
+    read -p 'Proceed? (Y)es, (N)o : ' REPLY
+    case $REPLY in
+    # Positive action
+    [Yy]* ) 
+        echo 'Requires root privileges:'
+        # Install.
+        echo 'Requires root privileges:'
+        sudo apt-get install -y --no-install-recommends freeglut3-dev g++ libdrm-dev libexpat1-dev libglw1-mesa-devlibmotif-dev libncurses5-dev libraw1394-dev libx11-dev libxdamage-dev libxext-dev libxt-dev libxxf86vm-dev tcsh unzip x11proto-dri2-dev x11proto-gl-dev x11proto-print-dev
+        ;;
+    # Negative action
+    [Nn]* )
+        clear && thirdparty
+        ;;
+    # Error
+    * )
+        clear && echo 'Sorry, try again.'
+        thirdparty
+        ;;
+    esac
+    }    
+    echo 'Downloading  PDD and OH...'
+    # Installing unzip (just in case it's not here)
+    # Download Debian file that matches system architecture
+    wget https://github.com/fsuarez6/phantom_omni/releases/download/0.2.0/OpenHapticsAE_Linux_v3_0.zip
+    unzip OpenHapticsAE_Linux_v3_0.zip
+    CURRENT_DIR="$(pwd)"
+    cd ./OpenHapticsAE_Linux_v3_0
+    # Install package(s)
+    echo 'Installing Dropbox...'
+    echo 'Requires root privileges:'
+    if [ $(uname -i) = 'i386' ]; then
+      cd ./OpenHaptics-AE\ 3.0/32-bit/
+      sudo dpkg -i openhaptics-ae*.deb
+      sudo apt-get install -fy
+      cd ../../PHANTOM\ Device\ Drivers/32-bit/
+      sudo dpkg -i phantomdevicedrivers*.deb
+      sudo apt-get install -fy
+    elif [ $(uname -i) = 'x86_64' ]; then
+      cd ./OpenHaptics-AE\ 3.0/64-bit/
+      sudo dpkg -i openhaptics-ae*.deb
+      sudo apt-get install -fy
+      cd ../../PHANTOM\ Device\ Drivers/64-bit/
+      sudo dpkg -i phantomdevicedrivers*.deb
+      sudo apt-get install -fy
+    fi
+    # Cleanup and finish
+    cd $CURRENT_DIR
+    rm -rf OpenHapticsAE_Linux_v3_0*
     echo 'Done.'
     thirdparty
     ;;
