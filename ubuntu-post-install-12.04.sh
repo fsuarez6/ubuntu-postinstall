@@ -57,6 +57,7 @@ filezilla
 gazebo
 geany
 geany-plugin-addons
+geany-plugins
 gimp
 gimp-plugin-registry
 git
@@ -88,7 +89,7 @@ case $REPLY in
     # Update
     sudo apt-get update
     # Install.
-    sudo apt-get install -y --no-install-recommends filezilla gazebo geany geany-plugin-addons python-wstool ros-hydro-ros-base synaptic terminator vlc wxmaxima openjdk-7-jdk openssh-server git mercurial python3-distutils-extra texlive-latex-extra scons gimp gimp-plugin-registry icontool imagemagick inkscape couchdb curl python-pip
+    sudo apt-get install -y --no-install-recommends filezilla gazebo geany geany-plugin-addons geany-plugins python-wstool ros-hydro-ros-base synaptic terminator vlc wxmaxima openjdk-7-jdk openssh-server git mercurial python3-distutils-extra texlive-latex-extra scons gimp gimp-plugin-registry icontool imagemagick inkscape couchdb curl python-pip
     echo 'Done.'
     main
     ;;
