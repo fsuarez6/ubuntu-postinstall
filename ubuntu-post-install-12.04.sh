@@ -251,7 +251,6 @@ x11proto-print-dev'
         thirdparty
         ;;
     esac
-    }    
     echo 'Downloading  PDD and OH...'
     # Installing unzip (just in case it's not here)
     # Download Debian file that matches system architecture
