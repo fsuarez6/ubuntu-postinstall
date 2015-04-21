@@ -54,7 +54,6 @@ echo 'Current package list:
 couchdb
 curl
 filezilla
-gazebo
 geany
 geany-plugin-addons
 geany-plugins
@@ -69,11 +68,9 @@ openjdk-7-jdk
 openssh-server
 python-pip
 python-wstool
-ros-hydro-ros-base
 scons
 synaptic
 terminator
-texlive-latex-extra 
 vlc
 wxmaxima'
 echo ''
@@ -83,13 +80,10 @@ case $REPLY in
 [Yy]* ) 
     echo 'Requires root privileges:'
     # Add repositories
-    # ROS Hydro
-    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
-    wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
     # Update
     sudo apt-get update
     # Install.
-    sudo apt-get install -y --no-install-recommends filezilla gazebo geany geany-plugin-addons geany-plugins python-wstool ros-hydro-ros-base synaptic terminator vlc wxmaxima openjdk-7-jdk openssh-server git mercurial python3-distutils-extra texlive-latex-extra scons gimp gimp-plugin-registry icontool imagemagick inkscape couchdb curl python-pip
+    sudo apt-get install -y --no-install-recommends filezilla geany geany-plugin-addons geany-plugins synaptic terminator vlc wxmaxima openjdk-7-jdk openssh-server git mercurial python3-distutils-extra scons gimp gimp-plugin-registry icontool imagemagick inkscape couchdb curl python-pip
     echo 'Done.'
     main
     ;;
@@ -130,6 +124,7 @@ echo '2. Smartgithg'
 echo '3. Texmaker'
 echo '4. Dropbox'
 echo '5. Phantom Omni'
+echo '6. VirtualBox'
 echo 'r. Return'
 echo ''
 read -p 'Enter your choice: ' REPLY
@@ -157,11 +152,11 @@ case $REPLY in
 # Smartgithg
 2) 
     echo 'Downloading Smartgithg 6...'
-    wget http://www.syntevo.com/download/smartgithg/smartgithg-6_0_4.deb
+    wget http://www.syntevo.com/downloads/smartgit/smartgit-6_5_7.deb
     # Install package(s)
     echo 'Installing Smartgithg 6...'
     echo 'Requires root privileges:'
-    sudo dpkg -i smartgithg*.deb
+    sudo dpkg -i smartgit*.deb
     sudo apt-get install -fy
     # Cleanup and finish
     rm smartgithg*.deb
@@ -279,6 +274,21 @@ x11proto-print-dev'
     # Cleanup and finish
     cd $CURRENT_DIR
     rm -rf OpenHapticsAE_Linux_v3_0*
+    echo 'Done.'
+    thirdparty
+    ;;
+# VirtualBox
+6) 
+    echo 'Downloading VirtualBox 4.3.26...'
+    wget http://download.virtualbox.org/virtualbox/4.3.26/virtualbox-4.3_4.3.26-98988~Ubuntu~precise_amd64.deb
+    # Install package(s)
+    echo 'Installing VirtualBox...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i virtualbox*.deb
+    sudo apt-get install -fy
+    # Cleanup and finish
+    rm virtualbox*.deb
+    cd
     echo 'Done.'
     thirdparty
     ;;
