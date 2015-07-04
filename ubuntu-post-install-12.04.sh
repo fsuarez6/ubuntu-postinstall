@@ -161,7 +161,7 @@ case $REPLY in
     sudo dpkg -i smartgit*.deb
     sudo apt-get install -fy
     # Cleanup and finish
-    rm smartgithg*.deb
+    rm smartgit*.deb
     cd
     echo 'Done.'
     thirdparty
