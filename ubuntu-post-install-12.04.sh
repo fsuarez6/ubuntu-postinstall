@@ -60,6 +60,7 @@ geany-plugins
 gimp
 gimp-plugin-registry
 git
+guake
 icontool
 imagemagick
 inkscape
@@ -83,7 +84,7 @@ case $REPLY in
     # Update
     sudo apt-get update
     # Install.
-    sudo apt-get install -y --no-install-recommends couchdb curl filezilla geany geany-plugins geany-plugin-addons gimp gimp-plugin-registry git icontool imagemagick inkscape mercurial openjdk-7-jdk openssh-server python-pip python3-distutils-extra scons synaptic terminator vlc wxmaxima
+    sudo apt-get install -y --no-install-recommends couchdb curl filezilla geany geany-plugins geany-plugin-addons gimp gimp-plugin-registry git guake icontool imagemagick inkscape mercurial openjdk-7-jdk openssh-server python-pip python3-distutils-extra scons synaptic terminator vlc wxmaxima
     echo 'Setting terminator as default terminal'
     gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
     echo 'Done.'
