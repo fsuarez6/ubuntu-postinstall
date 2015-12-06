@@ -87,6 +87,8 @@ case $REPLY in
     sudo apt-get install -y --no-install-recommends couchdb curl filezilla geany geany-plugins geany-plugin-addons gimp gimp-plugin-registry git guake icontool imagemagick inkscape mercurial openjdk-7-jdk openssh-server python-pip python3-distutils-extra scons synaptic terminator vlc wxmaxima
     echo 'Setting terminator as default terminal'
     gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+    echo 'Changing background'
+    gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
     echo 'Done.'
     main
     ;;
@@ -123,7 +125,7 @@ function thirdparty {
 echo 'What would you like to install? '
 echo ''
 echo '1. Google Chrome?'
-echo '2. Smartgithg'
+echo '2. Smartgithg 7.0.4'
 echo '3. Texmaker'
 echo '4. Dropbox'
 echo '5. Phantom Omni'
@@ -154,10 +156,10 @@ case $REPLY in
     ;;
 # Smartgithg
 2) 
-    echo 'Downloading Smartgithg 6...'
-    wget http://www.syntevo.com/downloads/smartgit/smartgit-6_5_7.deb
+    echo 'Downloading Smartgit'
+    wget http://www.syntevo.com/downloads/smartgit/smartgit-7_0_4.deb
     # Install package(s)
-    echo 'Installing Smartgithg 6...'
+    echo 'Installing Smartgit'
     echo 'Requires root privileges:'
     sudo dpkg -i smartgit*.deb
     sudo apt-get install -fy
