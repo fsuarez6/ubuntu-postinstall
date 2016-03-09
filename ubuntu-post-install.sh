@@ -8,9 +8,9 @@
 #   A post-installation bash script for Ubuntu (12.04)
 
 echo ''
-echo '#-------------------------------------------#'
-echo '#     Ubuntu 12.04 Post-Install Script      #'
-echo '#-------------------------------------------#'
+echo '#--------------------------------------------#'
+echo '#  Ubuntu 12.04 / 14.04 Post-Install Script  #'
+echo '#--------------------------------------------#'
 
 #----- FUNCTIONS -----#
 
@@ -88,7 +88,11 @@ case $REPLY in
     echo 'Setting terminator as default terminal'
     gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
     echo 'Changing background'
-    gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
+    if [ $(lsb_release -sr) = '12.04' ]; then
+      gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
+    elif [ $(lsb_release -sr) = '14.04' ]; then
+      gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Forever_by_Shady_S.jpg
+    fi
     echo 'Done.'
     main
     ;;
@@ -125,11 +129,10 @@ function thirdparty {
 echo 'What would you like to install? '
 echo ''
 echo '1. Google Chrome?'
-echo '2. Smartgithg 7.0.4'
-echo '3. Texmaker'
-echo '4. Dropbox'
-echo '5. Phantom Omni'
-echo '6. VirtualBox'
+echo '2. Smartgit 7.1.1'
+echo '3. Dropbox'
+echo '4. Phantom Omni'
+echo '5. VirtualBox'
 echo 'r. Return'
 echo ''
 read -p 'Enter your choice: ' REPLY
@@ -154,10 +157,10 @@ case $REPLY in
     echo 'Done.'
     thirdparty
     ;;
-# Smartgithg
+# Smartgit
 2) 
     echo 'Downloading Smartgit'
-    wget http://www.syntevo.com/downloads/smartgit/smartgit-7_0_4.deb
+    wget http://www.syntevo.com/static/smart/download/smartgit/smartgit-7_1_1.deb
     # Install package(s)
     echo 'Installing Smartgit'
     echo 'Requires root privileges:'
@@ -169,28 +172,8 @@ case $REPLY in
     echo 'Done.'
     thirdparty
     ;;
-# Texmaker
-3) 
-    echo 'Downloading Texmaker...'
-    # Download Debian file that matches system architecture
-    if [ $(uname -i) = 'i386' ]; then
-        wget http://www.xm1math.net/texmaker/texmaker_ubuntu_12.04_4.2_i386.deb
-    elif [ $(uname -i) = 'x86_64' ]; then
-        wget http://www.xm1math.net/texmaker/texmaker_ubuntu_12.04_4.2_amd64.deb
-    fi
-    # Install package(s)
-    echo 'Installing Texmaker...'
-    echo 'Requires root privileges:'
-    sudo dpkg -i texmaker*.deb
-    sudo apt-get install -fy
-    # Cleanup and finish
-    rm texmaker*.deb
-    cd
-    echo 'Done.'
-    thirdparty
-    ;;
 # Dropbox
-4) 
+3) 
     echo 'Downloading Dropbox...'
     # Download Debian file that matches system architecture
     if [ $(uname -i) = 'i386' ]; then
@@ -211,7 +194,7 @@ case $REPLY in
     thirdparty
     ;;
 # Phantom Omni
-5) 
+4) 
     echo 'Installing requirements:
 freeglut3-dev 
 g++ 
@@ -283,7 +266,7 @@ x11proto-print-dev'
     thirdparty
     ;;
 # VirtualBox
-6) 
+5) 
     echo 'Downloading VirtualBox 4.3.26...'
     wget http://download.virtualbox.org/virtualbox/4.3.26/virtualbox-4.3_4.3.26-98988~Ubuntu~precise_amd64.deb
     # Install package(s)
