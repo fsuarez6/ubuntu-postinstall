@@ -93,6 +93,10 @@ case $REPLY in
     elif [ $(lsb_release -sr) = '14.04' ]; then
       gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Forever_by_Shady_S.jpg
     fi
+    echo 'Defining git global stuff'
+    #~ git config --global user.email "fsuarez6@gmail.com"
+    #~ git config --global user.name "fsuarez6"
+    git config --global push.default simple
     echo 'Done.'
     main
     ;;
