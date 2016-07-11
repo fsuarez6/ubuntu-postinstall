@@ -1,11 +1,10 @@
 #!/bin/bash
-# TODO: Phantom omni
 #
 # Authors:
 #   Francisco Suarez-Ruiz <www.romin.upm.es/fsuarez>
 #
 # Description:
-#   A post-installation bash script for Ubuntu (12.04)
+#   A post-installation bash script for Ubuntu 14.04 and later
 
 echo ''
 echo '#--------------------------------------------#'
@@ -51,6 +50,7 @@ echo ''
 echo 'Installing selected favourite applications...'
 echo ''
 echo 'Current package list:
+arp-scan
 couchdb
 curl
 filezilla
@@ -60,12 +60,13 @@ geany-plugins
 gimp
 gimp-plugin-registry
 git
+gthumb
 guake
 icontool
 imagemagick
 inkscape
 mercurial
-openjdk-7-jdk
+openjdk-7-jdk | openjdk-8-jdk
 openssh-server
 python-pip
 python3-distutils-extra
@@ -84,7 +85,14 @@ case $REPLY in
     # Update
     sudo apt-get update
     # Install.
-    sudo apt-get install -y --no-install-recommends couchdb curl filezilla geany geany-plugins geany-plugin-addons gimp gimp-plugin-registry git guake icontool imagemagick inkscape mercurial openjdk-7-jdk openssh-server python-pip python3-distutils-extra scons synaptic terminator vlc wxmaxima
+    sudo apt-get install -y --no-install-recommends arp-scan couchdb curl filezilla geany geany-plugins geany-plugin-addons gimp gimp-plugin-registry git gthumb guake icontool imagemagick inkscape mercurial openssh-server python-pip python3-distutils-extra scons synaptic terminator vlc wxmaxima
+    if [ $(lsb_release -sr) = '12.04' ]; then
+      sudo apt-get install openjdk-7-jdk
+    elif [ $(lsb_release -sr) = '14.04' ]; then
+      sudo apt-get install openjdk-7-jdk
+    elif [ $(lsb_release -sr) = '16.04' ]; then
+      sudo apt-get install openjdk-8-jdk
+    fi
     echo 'Setting terminator as default terminal'
     gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
     echo 'Changing background'
@@ -92,8 +100,10 @@ case $REPLY in
       gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
     elif [ $(lsb_release -sr) = '14.04' ]; then
       gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Forever_by_Shady_S.jpg
+    elif [ $(lsb_release -sr) = '16.04' ]; then
+      gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/Spring_by_Peter_Apas.jpg
     fi
-    echo 'Defining git global stuff'
+    echo 'Defining git global for fsuarez6'
     #~ git config --global user.email "fsuarez6@gmail.com"
     #~ git config --global user.name "fsuarez6"
     git config --global push.default simple
