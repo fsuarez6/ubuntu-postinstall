@@ -7,9 +7,9 @@
 #   A post-installation bash script for Ubuntu 14.04 and later
 
 echo ''
-echo '#--------------------------------------------#'
-echo '#  Ubuntu 12.04 / 14.04 Post-Install Script  #'
-echo '#--------------------------------------------#'
+echo '#---------------------------------------------------#'
+echo '#  Ubuntu 14.04 and later Post-Installation Script  #'
+echo '#---------------------------------------------------#'
 
 #----- FUNCTIONS -----#
 
@@ -79,7 +79,7 @@ echo ''
 read -p 'Proceed? (Y)es, (N)o : ' REPLY
 case $REPLY in
 # Positive action
-[Yy]* ) 
+[Yy]* )
     echo 'Requires root privileges:'
     # Add repositories
     # Update
@@ -152,7 +152,7 @@ echo ''
 read -p 'Enter your choice: ' REPLY
 case $REPLY in
 # Google Chrome
-1) 
+1)
     echo 'Downloading Google Chrome...'
     # Download Debian file that matches system architecture
     if [ $(uname -i) = 'i386' ]; then
@@ -172,7 +172,7 @@ case $REPLY in
     thirdparty
     ;;
 # Smartgit
-2) 
+2)
     echo 'Downloading Smartgit'
     wget http://www.syntevo.com/static/smart/download/smartgit/smartgit-7_1_1.deb
     # Install package(s)
@@ -187,7 +187,7 @@ case $REPLY in
     thirdparty
     ;;
 # Dropbox
-3) 
+3)
     echo 'Downloading Dropbox...'
     # Download Debian file that matches system architecture
     if [ $(uname -i) = 'i386' ]; then
@@ -208,31 +208,31 @@ case $REPLY in
     thirdparty
     ;;
 # Phantom Omni
-4) 
+4)
     echo 'Installing requirements:
-freeglut3-dev 
-g++ 
-libdrm-dev 
-libexpat1-dev 
+freeglut3-dev
+g++
+libdrm-dev
+libexpat1-dev
 libglw1-mesa-dev
-libmotif-dev 
-libncurses5-dev 
-libraw1394-dev 
-libx11-dev 
-libxdamage-dev 
-libxext-dev 
-libxt-dev 
-libxxf86vm-dev 
-tcsh 
-unzip 
-x11proto-dri2-dev 
-x11proto-gl-dev 
+libmotif-dev
+libncurses5-dev
+libraw1394-dev
+libx11-dev
+libxdamage-dev
+libxext-dev
+libxt-dev
+libxxf86vm-dev
+tcsh
+unzip
+x11proto-dri2-dev
+x11proto-gl-dev
 x11proto-print-dev'
     echo ''
     read -p 'Proceed? (Y)es, (N)o : ' REPLY
     case $REPLY in
     # Positive action
-    [Yy]* ) 
+    [Yy]* )
         echo 'Requires root privileges:'
         # Install.
         echo 'Requires root privileges:'
@@ -280,7 +280,7 @@ x11proto-print-dev'
     thirdparty
     ;;
 # VirtualBox
-5) 
+5)
     echo 'Downloading VirtualBox 4.3.26...'
     wget http://download.virtualbox.org/virtualbox/4.3.26/virtualbox-4.3_4.3.26-98988~Ubuntu~precise_amd64.deb
     # Install package(s)
@@ -295,10 +295,10 @@ x11proto-print-dev'
     thirdparty
     ;;
 # Return
-[Rr]*) 
+[Rr]*)
     clear && main;;
 # Invalid choice
-* ) 
+* )
     clear && echo 'Not an option, try again.' && thirdparty;;
 esac
 }
@@ -356,10 +356,10 @@ case $REPLY in
     cleanup
     ;;
 # Return
-[Rr]*) 
+[Rr]*)
     clear && main;;
 # Invalid choice
-* ) 
+* )
     clear && echo 'Not an option, try again.' && cleanup;;
 esac
 }

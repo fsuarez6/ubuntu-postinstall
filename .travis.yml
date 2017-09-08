@@ -1,0 +1,10 @@
+sudo: true
+dist: trusty
+language:
+  - generic
+cache:
+  - apt
+
+# Run OpenRAVE installation script
+install:
+  - ./install-openrave.sh
